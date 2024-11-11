@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link
+    rel="icon"
+    href="/favicon.ico"
+  >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>Vite App</title>
+  <style>
+    html:has(#loader) {
+      position: relative;
+      overflow: hidden;
+    }
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      margin: auto;
+      width: 56px;
+      aspect-ratio: 1;
+      display: grid;
+      border: 4px solid #0000;
+      border-radius: 50%;
+      border-right-color: #25b09b;
+      animation: l15 1s infinite linear;
+    }
+
+    #loader::before,
+    #loader::after {
+      content: "";
+      grid-area: 1/1;
+      margin: 2px;
+      border: inherit;
+      border-radius: 50%;
+      animation: l15 2s infinite;
+    }
+
+    #loader::after {
+      margin: 8px;
+      animation-duration: 3s;
+    }
+
+    @keyframes l15 {
+      100% {
+        transform: rotate(1turn)
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div id="loader"></div>
+  </div>
+  <script
+    type="module"
+    src="/src/main.ts"
+  ></script>
+</body>
+
+</html>
