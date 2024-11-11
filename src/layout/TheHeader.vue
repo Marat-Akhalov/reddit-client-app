@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ThemeToggle from '@/components/theme/ThemeToggle.vue';
+
 
 </script>
 
@@ -15,13 +17,16 @@
         class="header__link header__link--logo"
       />
     </h2>
+    <ThemeToggle />
   </header>
 </template>
 
 <style scoped lang="scss">
 .header {
   display: flex;
+  align-items: center;
   gap: 8px;
+  padding: 8px 12px;
 
   &__logo {
     position: relative;
