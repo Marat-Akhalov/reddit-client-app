@@ -20,7 +20,7 @@ const visible = ref<boolean>(false)
           <MyIcon type="search" />
         </Button>
       </InputGroup>
-      <SearchModal />
+      <SearchModal v-model:visible="visible" />
     </form>
   </div>
 </template>

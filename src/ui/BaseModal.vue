@@ -8,7 +8,9 @@ const closeModal = () => {
 const onClickOutside = (e: Event) => {
   const target = e.target as HTMLElement;
 
-  if (target.classList.contains('modal')) return;
+  if (target.closest('.modal')) return;
+
+  console.log(target);
 
   closeModal()
 }
