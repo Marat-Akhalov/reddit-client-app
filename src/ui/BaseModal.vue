@@ -10,8 +10,6 @@ const onClickOutside = (e: Event) => {
 
   if (target.closest('.modal')) return;
 
-  console.log(target);
-
   closeModal()
 }
 </script>
@@ -80,12 +78,14 @@ const onClickOutside = (e: Event) => {
   position: relative;
   z-index: 100;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border: 1px solid #3f3f46;
   border-radius: 12px;
   margin: auto;
   padding: 20px;
+  padding-top: 36px;
   max-width: 450px;
   width: 100%;
   overflow-y: auto;

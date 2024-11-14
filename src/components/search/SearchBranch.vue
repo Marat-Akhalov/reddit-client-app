@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import MyIcon from '@/ui/MyIcon.vue';
 import { Button, InputGroup } from 'primevue';
-import { ref } from 'vue';
-import SearchModal from './SearchModal.vue';
+import { defineAsyncComponent, ref } from 'vue';
+const SearchModal = defineAsyncComponent(() => import('@/components/search/SearchModal.vue'))
 
 const visible = ref<boolean>(false)
 </script>
@@ -20,7 +20,10 @@ const visible = ref<boolean>(false)
           <MyIcon type="search" />
         </Button>
       </InputGroup>
-      <SearchModal v-model:visible="visible" />
+      <SearchModal
+        v-if="visible"
+        v-model:visible="visible"
+      />
     </form>
   </div>
 </template>

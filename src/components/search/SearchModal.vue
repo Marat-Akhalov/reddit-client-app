@@ -1,16 +1,73 @@
 <script setup lang="ts">
 import BaseModal from '@/ui/BaseModal.vue';
+import MyIcon from '@/ui/MyIcon.vue';
+import { onMounted, useTemplateRef } from 'vue';
+// import { InputText } from 'primevue';
 
 const visible = defineModel<boolean>('visible', { required: true })
+const input = useTemplateRef('search-input');
+
+onMounted(() => {
+  console.log('mount');
+  input.value?.focus()
+  console.log(input.value);
+})
 </script>
 
 <template>
   <BaseModal v-model:visible="visible">
-    <input
-      type="text"
-      placeholder="me"
-    >
+    <div class="search-modal">
+      <div class="search-modal__control">
+        <input
+          type="text"
+          class="search-modal__input"
+          placeholder="Enter reddit branch name..."
+          ref="search-input"
+        >
+        <MyIcon
+          type="search"
+          class="search-modal__icon"
+        />
+      </div>
+    </div>
   </BaseModal>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.search-modal {
+  width: 100%;
+
+  &__control {
+    position: relative;
+  }
+
+  &__input {
+    border: 1px solid #71717a;
+    border: 1px solid #52525b;
+    border-radius: 8px;
+    padding: 0.5rem .75rem;
+    padding-left: 2rem;
+    width: 100%;
+    font-size: 1rem;
+    color: var(--clr-text);
+    outline: none;
+    appearance: none;
+    transition: border-color .2s ease-in-out;
+
+    &:focus-visible {
+      border-color: #34d399;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 12px;
+    margin: auto;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+</style>
