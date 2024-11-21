@@ -1,73 +1,142 @@
 <script setup lang="ts">
-import BaseModal from '@/ui/BaseModal.vue';
-import MyIcon from '@/ui/MyIcon.vue';
-import { onMounted, useTemplateRef } from 'vue';
-// import { InputText } from 'primevue';
+import { onMounted, onUnmounted } from 'vue';
 
 const visible = defineModel<boolean>('visible', { required: true })
-const input = useTemplateRef('search-input');
+
+const closeModal = () => visible.value = false
+
+const onClickOutside = (e: Event) => {
+  const target = e.target as HTMLElement;
+
+  if (target.closest('.search-modal')) return;
+
+  closeModal()
+}
+
+const handleEscapeClick = (e: KeyboardEvent) => {
+  const key = e.key;
+
+  if (key !== 'Escape') return;
+
+  closeModal()
+};
 
 onMounted(() => {
-  console.log('mount');
-  input.value?.focus()
-  console.log(input.value);
+  document.addEventListener('keydown', handleEscapeClick)
+  document.body.classList.add('overflow')
+})
+
+onUnmounted(() => {
+  document.removeEventListener('keydown', handleEscapeClick)
+  document.body.classList.remove('overflow')
 })
 </script>
 
 <template>
-  <BaseModal v-model:visible="visible">
-    <div class="search-modal">
-      <div class="search-modal__control">
-        <input
-          type="text"
-          class="search-modal__input"
-          placeholder="Enter reddit branch name..."
-          ref="search-input"
+  <Teleport to="body">
+    <div
+      v-if="visible"
+      class="modal-mask"
+      @click="onClickOutside"
+    >
+      <transition
+        name="search-modal"
+        appear
+      >
+        <div
+          v-if="visible"
+          @click="onClickOutside"
+          @keydown="closeModal"
+          class="search-modal"
         >
-        <MyIcon
-          type="search"
-          class="search-modal__icon"
-        />
-      </div>
+          <button
+            class="search-modal__close btn-reset"
+            @click="closeModal"
+            aria-label="Close modal window"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              x="0px"
+              y="0px"
+              width="24"
+              height="24"
+              viewBox="0 0 50 50"
+              fill="currentColor"
+            >
+              <path
+                d="M 9.15625 6.3125 L 6.3125 9.15625 L 22.15625 25 L 6.21875 40.96875 L 9.03125 43.78125 L 25 27.84375 L 40.9375 43.78125 L 43.78125 40.9375 L 27.84375 25 L 43.6875 9.15625 L 40.84375 6.3125 L 25 22.15625 Z"
+              ></path>
+            </svg>
+          </button>
+          <slot>
+            Temporary content
+          </slot>
+        </div>
+      </transition>
     </div>
-  </BaseModal>
+  </Teleport>
 </template>
 
 <style scoped lang="scss">
-.search-modal {
-  width: 100%;
+.modal-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  place-items: center;
 
-  &__control {
-    position: relative;
-  }
-
-  &__input {
-    border: 1px solid #71717a;
-    border: 1px solid #52525b;
-    border-radius: 8px;
-    padding: 0.5rem .75rem;
-    padding-left: 2rem;
-    width: 100%;
-    font-size: 1rem;
-    color: var(--clr-text);
-    outline: none;
-    appearance: none;
-    transition: border-color .2s ease-in-out;
-
-    &:focus-visible {
-      border-color: #34d399;
-    }
-  }
-
-  &__icon {
+  &::after {
+    content: "";
     position: absolute;
+    inset: 0;
+    background-color: #000;
+    opacity: .5;
+  }
+}
+
+.search-modal {
+  position: relative;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #3f3f46;
+  border-radius: 12px;
+  margin: auto;
+  padding: 20px;
+  padding-top: 36px;
+  max-width: 450px;
+  width: 100%;
+  overflow-y: auto;
+  opacity: 1;
+  transform: scale(1);
+  color: var(--clr-text);
+  background-color: var(--clr-modal-bg);
+
+  &__close {
+    position: absolute;
+    right: 0;
     top: 0;
-    bottom: 0;
-    left: 12px;
-    margin: auto;
     display: inline-flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    padding: 4px;
+    cursor: pointer;
+  }
+}
+
+.search-modal-enter-active {
+  animation: fade .2s ease-in-out;
+}
+
+@keyframes fade {
+  0% {
+    transform: translateY(-10px) scale(0.9);
+  }
+
+  100% {
+    transform: translateY(0px) scale(1);
   }
 }
 </style>

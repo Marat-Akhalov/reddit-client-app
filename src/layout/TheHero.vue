@@ -33,7 +33,8 @@
 
   &__descr {
     margin: 0;
-    max-width: 440px;
+    margin-bottom: 16px;
+    max-width: 30rem;
     font-size: 1.2rem;
     text-wrap: balance;
     text-align: center;
