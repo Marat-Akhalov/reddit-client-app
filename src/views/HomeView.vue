@@ -5,8 +5,19 @@ import TheHero from '@/layout/TheHero.vue';
 </script>
 
 <template>
-  <TheHero />
-  <SearchBranch />
+  <div class="main__wrapper">
+    <TheHero />
+    <SearchBranch />
+  </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.main {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: auto;
+  }
+}
+</style>

@@ -9,6 +9,8 @@
         src="@/assets/img/logo.ico"
         alt=""
         class="hero__logo-img"
+        width="100"
+        height="100"
       >
     </div>
     <h1 class="hero__title">Reddit Client App</h1>
@@ -23,8 +25,11 @@
 <style scoped lang="scss">
 .hero {
   display: flex;
+  height: 100%;
   flex-direction: column;
   align-items: center;
+  justify-self: center;
+  align-self: center;
   gap: 16px;
 
   &__title {

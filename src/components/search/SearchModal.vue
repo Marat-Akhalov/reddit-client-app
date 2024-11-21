@@ -5,6 +5,10 @@ const visible = defineModel<boolean>('visible', { required: true })
 
 const closeModal = () => visible.value = false
 
+
+/**
+ * TODO: отрефакторить и привести к более лаконичному виду
+ */
 const onClickOutside = (e: Event) => {
   const target = e.target as HTMLElement;
 
