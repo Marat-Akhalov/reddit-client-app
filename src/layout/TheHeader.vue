@@ -11,6 +11,8 @@ import ThemeToggle from '@/components/theme/ThemeToggle.vue';
         src="@/assets/img/logo.ico"
         alt="App logo"
         class="header__logo-icon"
+        width="80"
+        height="80"
       >
       <RouterLink
         :to="{ name: 'home' }"

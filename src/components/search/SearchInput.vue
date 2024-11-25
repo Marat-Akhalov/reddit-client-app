@@ -1,19 +1,29 @@
 <script setup lang="ts">
+import MyIcon from '@/ui/MyIcon.vue';
+import { ref } from 'vue';
 
+const emit = defineEmits<{
+  (e: 'search-branch', searchQuery: string): void
+}>()
+
+const searchQuery = ref<string>('')
 </script>
 
 <template>
-  <form class="search-form">
-    <div class="search-modal__control">
+  <form
+    class="search-form"
+    @submit.prevent="emit('search-branch', searchQuery)"
+  >
+    <div class="search-form__control">
       <input
+        v-model="searchQuery"
         type="text"
-        class="search-modal__input"
+        class="search-form__input"
         placeholder="Enter reddit branch name..."
-        ref="search-input"
       >
       <MyIcon
         type="search"
-        class="search-modal__icon"
+        class="search-form__icon"
       />
     </div>
   </form>
@@ -21,12 +31,13 @@
 
 <style scoped lang="scss">
 .search-form {
+  width: 100%;
+
   &__control {
     position: relative;
   }
 
   &__input {
-    border: 1px solid #71717a;
     border: 1px solid #52525b;
     border-radius: 8px;
     padding: 0.5rem .75rem;

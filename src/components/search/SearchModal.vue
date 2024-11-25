@@ -5,7 +5,6 @@ const visible = defineModel<boolean>('visible', { required: true })
 
 const closeModal = () => visible.value = false
 
-
 /**
  * TODO: отрефакторить и привести к более лаконичному виду
  */
@@ -17,21 +16,22 @@ const onClickOutside = (e: Event) => {
   closeModal()
 }
 
-const handleEscapeClick = (e: KeyboardEvent) => {
+const handleEscClick = (e: KeyboardEvent) => {
   const key = e.key;
 
   if (key !== 'Escape') return;
+
 
   closeModal()
 };
 
 onMounted(() => {
-  document.addEventListener('keydown', handleEscapeClick)
+  document.addEventListener('keydown', handleEscClick)
   document.body.classList.add('overflow')
 })
 
 onUnmounted(() => {
-  document.removeEventListener('keydown', handleEscapeClick)
+  document.removeEventListener('keydown', handleEscClick)
   document.body.classList.remove('overflow')
 })
 </script>
@@ -50,7 +50,6 @@ onUnmounted(() => {
         <div
           v-if="visible"
           @click="onClickOutside"
-          @keydown="closeModal"
           class="search-modal"
         >
           <button
@@ -113,9 +112,9 @@ onUnmounted(() => {
   max-width: 450px;
   width: 100%;
   overflow-y: auto;
+  color: var(--clr-text);
   opacity: 1;
   transform: scale(1);
-  color: var(--clr-text);
   background-color: var(--clr-modal-bg);
 
   &__close {

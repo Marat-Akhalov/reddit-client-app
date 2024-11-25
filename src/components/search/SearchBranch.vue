@@ -2,9 +2,18 @@
 import MyIcon from '@/ui/MyIcon.vue';
 import { Button, InputGroup } from 'primevue';
 import { defineAsyncComponent, ref } from 'vue';
+import SearchInput from './SearchInput.vue';
 const SearchModal = defineAsyncComponent(() => import('@/components/search/SearchModal.vue'))
 
 const visible = ref<boolean>(false)
+
+const openModal = () => {
+  visible.value = !visible.value
+}
+
+const handleSearch = (searchQuery) => {
+  console.log(searchQuery);
+}
 </script>
 
 <template>
@@ -14,7 +23,7 @@ const visible = ref<boolean>(false)
         <Button
           class="search-branch__btn"
           label="Search"
-          @click="visible = !visible"
+          @click="openModal"
         >
           Search
           <MyIcon type="search" />
@@ -23,7 +32,9 @@ const visible = ref<boolean>(false)
       <SearchModal
         v-if="visible"
         v-model:visible="visible"
-      />
+      >
+        <SearchInput @search-branch="handleSearch" />
+      </SearchModal>
     </form>
   </div>
 </template>
