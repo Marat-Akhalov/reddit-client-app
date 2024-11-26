@@ -6,7 +6,7 @@
   <section class="hero">
     <div class="hero__logo">
       <img
-        src="@/assets/img/logo.ico"
+        src="@/assets/img/logo.svg"
         alt=""
         class="hero__logo-img"
         width="100"
@@ -51,14 +51,14 @@
     &::after {
       content: "";
       position: absolute;
-      inset: -4px;
+      inset: -8px;
       margin: auto;
       z-index: -99;
       border-radius: 50%;
       filter: blur(24px);
       opacity: .5;
       background-color: #e7574f;
-      animation: glow 5s ease-in-out infinite;
+      animation: glow 3s ease-in-out infinite;
     }
   }
 }
