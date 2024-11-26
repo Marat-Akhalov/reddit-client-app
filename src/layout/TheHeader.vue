@@ -29,6 +29,7 @@ import ThemeToggle from '@/components/theme/ThemeToggle.vue';
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
+  animation: fade-in .2s ease-in;
 
   &__logo {
     position: relative;
@@ -36,29 +37,25 @@ import ThemeToggle from '@/components/theme/ThemeToggle.vue';
     margin-right: auto;
     width: 80px;
     height: 80px;
-
-    // &::after {
-    //   content: '';
-    //   position: absolute;
-    //   inset: 0;
-    //   z-index: -99;
-    //   margin: auto;
-    //   border-radius: 50%;
-    //   width: 85px;
-    //   height: 85px;
-    //   filter: blur(24px);
-    //   opacity: .5;
-    //   background-color: blue;
-    // }
   }
-
-  &__logo-icon {}
 
   &__link {
     &--logo {
       position: absolute;
       inset: 0;
     }
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>

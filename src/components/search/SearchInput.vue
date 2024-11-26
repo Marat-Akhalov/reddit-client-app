@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import MyIcon from '@/ui/MyIcon.vue';
 import { Button, InputGroup, InputText } from 'primevue';
 import { ref } from 'vue';
 
