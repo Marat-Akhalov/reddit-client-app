@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import MyIcon from '@/ui/MyIcon.vue';
+import { Button, InputGroup, InputText } from 'primevue';
 import { ref } from 'vue';
 
 const emit = defineEmits<{
@@ -14,18 +15,16 @@ const searchQuery = ref<string>('')
     class="search-form"
     @submit.prevent="emit('search-branch', searchQuery)"
   >
-    <div class="search-form__control">
-      <input
+    <InputGroup class="search-form__control">
+      <InputText
         v-model="searchQuery"
-        type="text"
-        class="search-form__input"
         placeholder="Enter reddit branch name..."
-      >
-      <MyIcon
-        type="search"
-        class="search-form__icon"
       />
-    </div>
+      <Button
+        label="Search"
+        type="submit"
+      />
+    </InputGroup>
   </form>
 </template>
 
