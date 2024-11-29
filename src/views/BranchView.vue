@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import BranchSidebar from '@/components/branch/BranchSidebar.vue';
+import BranchSection from '@/components/branch/BranchSection.vue';
 
 
 </script>
 
 <template>
   <div class="main__wrapper">
-    <BranchSidebar />
+    <BranchSection />
   </div>
 </template>
 

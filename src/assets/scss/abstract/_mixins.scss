@@ -1,7 +1,8 @@
 @mixin font-face($font-family, $url, $weight, $style) {
   @font-face {
     font-family: '#{$font-family}';
-    src: local('#{$font-family}'),
+    src:
+      local('#{$font-family}'),
       url('~/resources/fonts/#{$url}.woff2') format('woff2');
     font-weight: #{$weight};
     font-display: swap;
@@ -26,4 +27,27 @@
   flex-wrap: #{$wrap};
   justify-content: center;
   align-items: center;
+}
+
+@mixin sm {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+@mixin md {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: 1280px) {
+    @content;
+  }
 }
