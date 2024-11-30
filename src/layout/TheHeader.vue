@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import ThemeToggle from '@/components/theme/ThemeToggle.vue';
-
-
 </script>
 
 <template>
@@ -19,11 +17,13 @@ import ThemeToggle from '@/components/theme/ThemeToggle.vue';
         class="header__link header__link--logo"
       />
     </h2>
-    <ThemeToggle />
+    <ThemeToggle class="header__toggle" />
   </header>
 </template>
 
 <style scoped lang="scss">
+@use '@/assets/scss/abstract' as *;
+
 .header {
   display: flex;
   align-items: center;
@@ -31,12 +31,19 @@ import ThemeToggle from '@/components/theme/ThemeToggle.vue';
   padding: 8px 12px;
   animation: fade-in .2s ease-in;
 
+  @include sm {}
+
   &__logo {
     position: relative;
+    display: none;
     margin: 0;
     margin-right: auto;
     width: 80px;
     height: 80px;
+
+    @include sm {
+      display: block;
+    }
   }
 
   &__link {
@@ -44,6 +51,10 @@ import ThemeToggle from '@/components/theme/ThemeToggle.vue';
       position: absolute;
       inset: 0;
     }
+  }
+
+  &__toggle {
+    justify-self: flex-end;
   }
 }
 
