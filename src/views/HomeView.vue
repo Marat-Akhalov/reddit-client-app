@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import SearchBranch from '@/components/search/SearchBranch.vue';
-import TheHero from '@/layout/TheHero.vue';
-
+import SearchBranch from '@/components/search/SearchBranch.vue'
+import TheHero from '@/layout/TheHero.vue'
 </script>
 
 <template>
@@ -15,8 +14,9 @@ import TheHero from '@/layout/TheHero.vue';
 .main {
   &__wrapper {
     display: flex;
+    justify-content: center;
     flex-direction: column;
-    height: 100%;
+    min-height: calc(100dvh - 40px);
     margin: auto;
   }
 }
