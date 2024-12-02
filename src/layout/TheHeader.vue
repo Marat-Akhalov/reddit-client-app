@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import ThemeToggle from '@/components/theme/ThemeToggle.vue';
+import HeaderBurger from '@/components/HeaderBurger.vue'
+import ThemeToggle from '@/components/theme/ThemeToggle.vue'
 </script>
 
 <template>
@@ -11,12 +12,13 @@ import ThemeToggle from '@/components/theme/ThemeToggle.vue';
         class="header__logo-icon"
         width="80"
         height="80"
-      >
+      />
       <RouterLink
         :to="{ name: 'home' }"
         class="header__link header__link--logo"
       />
     </h2>
+    <HeaderBurger @toggle-burger="open => console.log(open)" />
     <ThemeToggle class="header__toggle" />
   </header>
 </template>
@@ -29,9 +31,10 @@ import ThemeToggle from '@/components/theme/ThemeToggle.vue';
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
-  animation: fade-in .2s ease-in;
+  animation: fade-in 0.2s ease-in;
 
-  @include sm {}
+  @include sm {
+  }
 
   &__logo {
     position: relative;
