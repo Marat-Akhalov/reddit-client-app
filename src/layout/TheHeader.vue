@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import HeaderBurger from '@/components/HeaderBurger.vue'
 import ThemeToggle from '@/components/theme/ThemeToggle.vue'
+import { useSidebarStore } from '@/store/sidebar'
+
+const sidebarStore = useSidebarStore()
+const { toggleSidebar } = sidebarStore
 </script>
 
 <template>
@@ -18,7 +22,7 @@ import ThemeToggle from '@/components/theme/ThemeToggle.vue'
         class="header__link header__link--logo"
       />
     </h2>
-    <HeaderBurger @toggle-burger="open => console.log(open)" />
+    <HeaderBurger @toggle-burger="toggleSidebar" />
     <ThemeToggle class="header__toggle" />
   </header>
 </template>

@@ -26,8 +26,11 @@ const toggle = () => {
 </template>
 
 <style scoped lang="scss">
+@use '../assets/scss/abstract' as *;
+
 .burger {
   position: relative;
+  z-index: 99;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -59,6 +62,10 @@ const toggle = () => {
 
   &::before {
     transform: translateY(-8px);
+  }
+
+  @include sm {
+    display: none;
   }
 }
 

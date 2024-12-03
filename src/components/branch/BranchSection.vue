@@ -1,15 +1,18 @@
 <script setup lang="ts">
-import BranchList from './BranchList.vue';
-import BranchSidebar from './BranchSidebar.vue';
+import { useSidebarStore } from '@/store/sidebar'
+import BranchList from './BranchList.vue'
+import BranchSidebar from './BranchSidebar.vue'
+import { storeToRefs } from 'pinia'
 
-
+const sidebarStore = useSidebarStore()
+const { isOpen } = storeToRefs(sidebarStore)
 </script>
 
 <template>
   <section class="branch">
     <h2 class="branch__title">Branch name</h2>
     <div class="branch__wrap">
-      <BranchSidebar />
+      <BranchSidebar :class="{ 'sidebar--open': isOpen }" />
       <BranchList />
     </div>
   </section>
