@@ -7,10 +7,22 @@ const toggle = useToggle(isDark)
 </script>
 
 <template>
-  <button class="toggle-theme" @click="toggle()">
-    <Transition name="icon" mode="out-in">
-      <MyIcon v-if="isDark" type="sun" />
-      <MyIcon v-else type="moon" />
+  <button
+    class="toggle-theme"
+    @click="toggle()"
+  >
+    <Transition
+      name="icon"
+      mode="out-in"
+    >
+      <MyIcon
+        v-if="isDark"
+        type="sun"
+      />
+      <MyIcon
+        v-else
+        type="moon"
+      />
     </Transition>
   </button>
 </template>

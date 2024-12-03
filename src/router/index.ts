@@ -9,9 +9,16 @@ const router = createRouter({
       component: () => import('@/views/HomeView.vue'),
     },
     {
-      path: '/branch',
-      name: 'branch',
-      component: () => import('@/views/BranchView.vue'),
+      path: '/r',
+      name: 'r',
+      children: [
+        {
+          path: '/r/:branchName',
+          name: 'r-branch',
+          component: () => import('@/views/BranchView.vue'),
+          props: true,
+        },
+      ],
     },
   ],
 })

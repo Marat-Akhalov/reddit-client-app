@@ -22,7 +22,10 @@ const searchQueryFormatted = computed(() =>
         v-model="searchQuery"
         placeholder="Enter reddit branch name..."
       />
-      <Button label="Search" type="submit" />
+      <Button
+        label="Search"
+        type="submit"
+      />
     </InputGroup>
   </form>
 </template>

@@ -3,18 +3,25 @@ import MyIcon from '@/ui/MyIcon.vue'
 import { Button, InputGroup } from 'primevue'
 import { defineAsyncComponent, ref } from 'vue'
 import SearchInput from './SearchInput.vue'
+import { useRouter } from 'vue-router'
 const SearchModal = defineAsyncComponent(
   () => import('@/components/search/SearchModal.vue'),
 )
 
-const visible = ref<boolean>(false)
+const router = useRouter()
 
+const visible = ref<boolean>(false)
 const openModal = () => {
   visible.value = !visible.value
 }
 
+/**
+ * TODO: написать нормальную валидацию при невалидной строке поиска
+ */
 const handleSearch = (searchQuery: string) => {
-  console.log(searchQuery)
+  if (!searchQuery) return
+
+  router.push({ name: 'r-branch', params: { branchName: searchQuery } })
 }
 </script>
 
@@ -22,12 +29,19 @@ const handleSearch = (searchQuery: string) => {
   <div class="search-branch">
     <form class="search-branch__form">
       <InputGroup class="search-branch__form-control">
-        <Button class="search-branch__btn" label="Search" @click="openModal">
+        <Button
+          class="search-branch__btn"
+          label="Search"
+          @click="openModal"
+        >
           Search
           <MyIcon type="search" />
         </Button>
       </InputGroup>
-      <SearchModal v-if="visible" v-model:visible="visible">
+      <SearchModal
+        v-if="visible"
+        v-model:visible="visible"
+      >
         <SearchInput @search-branch="handleSearch" />
       </SearchModal>
     </form>
@@ -50,9 +64,6 @@ const handleSearch = (searchQuery: string) => {
     align-items: center;
     justify-content: center;
     width: 100%;
-  }
-
-  &__btn {
   }
 }
 

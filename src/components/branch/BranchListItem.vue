@@ -1,11 +1,7 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <li class="branch__item">
-    item
-  </li>
+  <li class="branch__item">item</li>
 </template>
 
 <style scoped lang="scss">

@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import BranchListItem from './BranchListItem.vue';
-
-
+import BranchListItem from './BranchListItem.vue'
 </script>
 
 <template>

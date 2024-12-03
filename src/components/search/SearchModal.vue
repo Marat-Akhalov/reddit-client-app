@@ -1,29 +1,28 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue';
+import { onMounted, onUnmounted } from 'vue'
 
 const visible = defineModel<boolean>('visible', { required: true })
 
-const closeModal = () => visible.value = false
+const closeModal = () => (visible.value = false)
 
 /**
  * TODO: отрефакторить и привести к более лаконичному виду
  */
 const onClickOutside = (e: Event) => {
-  const target = e.target as HTMLElement;
+  const target = e.target as HTMLElement
 
-  if (target.closest('.search-modal')) return;
+  if (target.closest('.search-modal')) return
 
   closeModal()
 }
 
 const handleEscClick = (e: KeyboardEvent) => {
-  const key = e.key;
+  const key = e.key
 
-  if (key !== 'Escape') return;
-
+  if (key !== 'Escape') return
 
   closeModal()
-};
+}
 
 onMounted(() => {
   document.addEventListener('keydown', handleEscClick)
@@ -71,9 +70,7 @@ onUnmounted(() => {
               ></path>
             </svg>
           </button>
-          <slot>
-            Temporary content
-          </slot>
+          <slot> Temporary content </slot>
         </div>
       </transition>
     </div>
@@ -89,11 +86,11 @@ onUnmounted(() => {
   place-items: center;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     inset: 0;
     background-color: #000;
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 
@@ -130,7 +127,7 @@ onUnmounted(() => {
 }
 
 .search-modal-enter-active {
-  animation: fade .2s ease-in-out;
+  animation: fade 0.2s ease-in-out;
 }
 
 @keyframes fade {
