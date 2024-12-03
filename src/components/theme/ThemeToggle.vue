@@ -1,34 +1,24 @@
 <script setup lang="ts">
-import { useDark, useToggle } from '@vueuse/core';
-import MyIcon from '@/ui/MyIcon.vue';
+import { useDark, useToggle } from '@vueuse/core'
+import MyIcon from '@/ui/MyIcon.vue'
 
 const isDark = useDark()
 const toggle = useToggle(isDark)
 </script>
 
 <template>
-  <button
-    class="toggle-theme"
-    @click="toggle()"
-  >
-    <Transition
-      name="icon"
-      mode="out-in"
-    >
-      <MyIcon
-        v-if="isDark"
-        type="sun"
-      />
-      <MyIcon
-        v-else
-        type="moon"
-      />
+  <button class="toggle-theme" @click="toggle()">
+    <Transition name="icon" mode="out-in">
+      <MyIcon v-if="isDark" type="sun" />
+      <MyIcon v-else type="moon" />
     </Transition>
   </button>
 </template>
 
 <style scoped lang="scss">
 .toggle-theme {
+  position: relative;
+  z-index: 99;
   display: inline-flex;
   border: none;
   padding: 4px;
@@ -37,11 +27,11 @@ const toggle = useToggle(isDark)
 }
 
 .icon-enter-active {
-  animation: fade-in .2s ease-in;
+  animation: fade-in 0.2s ease-in;
 }
 
 .icon-leave-active {
-  animation: fade-in .2s ease-in reverse;
+  animation: fade-in 0.2s ease-in reverse;
 }
 
 @keyframes fade-in {

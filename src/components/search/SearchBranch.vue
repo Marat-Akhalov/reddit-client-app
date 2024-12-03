@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import MyIcon from '@/ui/MyIcon.vue';
-import { Button, InputGroup } from 'primevue';
-import { defineAsyncComponent, ref } from 'vue';
-import SearchInput from './SearchInput.vue';
-const SearchModal = defineAsyncComponent(() => import('@/components/search/SearchModal.vue'))
+import MyIcon from '@/ui/MyIcon.vue'
+import { Button, InputGroup } from 'primevue'
+import { defineAsyncComponent, ref } from 'vue'
+import SearchInput from './SearchInput.vue'
+const SearchModal = defineAsyncComponent(
+  () => import('@/components/search/SearchModal.vue'),
+)
 
 const visible = ref<boolean>(false)
 
@@ -11,8 +13,8 @@ const openModal = () => {
   visible.value = !visible.value
 }
 
-const handleSearch = (searchQuery) => {
-  console.log(searchQuery);
+const handleSearch = (searchQuery: string) => {
+  console.log(searchQuery)
 }
 </script>
 
@@ -20,19 +22,12 @@ const handleSearch = (searchQuery) => {
   <div class="search-branch">
     <form class="search-branch__form">
       <InputGroup class="search-branch__form-control">
-        <Button
-          class="search-branch__btn"
-          label="Search"
-          @click="openModal"
-        >
+        <Button class="search-branch__btn" label="Search" @click="openModal">
           Search
           <MyIcon type="search" />
         </Button>
       </InputGroup>
-      <SearchModal
-        v-if="visible"
-        v-model:visible="visible"
-      >
+      <SearchModal v-if="visible" v-model:visible="visible">
         <SearchInput @search-branch="handleSearch" />
       </SearchModal>
     </form>
@@ -57,10 +52,11 @@ const handleSearch = (searchQuery) => {
     width: 100%;
   }
 
-  &__btn {}
+  &__btn {
+  }
 }
 
-.p-inputgroup>.p-button:not(.p-button-icon-only) {
+.p-inputgroup > .p-button:not(.p-button-icon-only) {
   width: 100%;
 }
 </style>
