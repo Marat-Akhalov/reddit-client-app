@@ -14,8 +14,8 @@ const { toggleSidebar } = sidebarStore
         src="@/assets/img/logo.ico"
         alt="App logo"
         class="header__logo-icon"
-        width="80"
-        height="80"
+        width="68"
+        height="68"
       />
       <RouterLink
         :to="{ name: 'home' }"
@@ -31,13 +31,21 @@ const { toggleSidebar } = sidebarStore
 @use '@/assets/scss/abstract' as *;
 
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 12px;
+  padding: 12px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  backdrop-filter: blur(15px);
   animation: fade-in 0.2s ease-in;
 
   @include sm {
+    padding: 8px;
   }
 
   &__logo {
@@ -45,8 +53,8 @@ const { toggleSidebar } = sidebarStore
     display: none;
     margin: 0;
     margin-right: auto;
-    width: 80px;
-    height: 80px;
+    width: 68px;
+    height: 68px;
 
     @include sm {
       display: block;

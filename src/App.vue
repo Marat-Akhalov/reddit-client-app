@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue';
-import PageLayout from './views/PageLayout.vue';
-const TheHeader = defineAsyncComponent(() => import('@/layout/TheHeader.vue'))
+import PageLayout from '@/views/PageLayout.vue'
+import TheHeader from '@/layout/TheHeader.vue'
 </script>
 
 <template>
