@@ -3,11 +3,6 @@ import { useSidebarStore } from '@/store/sidebar'
 import BranchList from './BranchList.vue'
 import BranchSidebar from './BranchSidebar.vue'
 import { storeToRefs } from 'pinia'
-import { useRoute } from 'vue-router'
-
-const { branchName } = useRoute().params
-
-console.log(branchName)
 
 const sidebarStore = useSidebarStore()
 const { isOpen } = storeToRefs(sidebarStore)

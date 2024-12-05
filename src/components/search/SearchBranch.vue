@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MyIcon from '@/ui/MyIcon.vue'
+import MyIcon from '@/components/ui/MyIcon.vue'
 import { Button, InputGroup } from 'primevue'
 import { defineAsyncComponent, ref } from 'vue'
 import SearchInput from './SearchInput.vue'

@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import BranchSection from '@/components/branch/BranchSection.vue';
-
-
+import BranchSection from '@/components/branch/BranchSection.vue'
 </script>
 
 <template>
